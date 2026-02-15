@@ -1,0 +1,24 @@
+[project]
+name = "literally-every-lang"
+version = "1.0.0-rc1"
+description = "A corporate-themed Esolang for high-level stakeholders."
+authors = [{name = "Kane", email = "kmboswell@proton.me"}]
+dependencies = []
+
+[tool.black]
+line-length = 88
+target-version = ['py311']
+include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
+
+# 'taskipy' allows us to run 'npm-style' scripts
+# To use these, run: pip install taskipy black isort
+
+[tool.taskipy.tasks]
+audit = "python -m unittest discover tests"
+liquidate = "python src/interpreter.py"
+format = "black src tests && isort src tests"
+lint = "black --check src tests"
+```
